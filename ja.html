@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelDream — Туристическое агентство | Поиск и бронирование туров</title>
+    <!-- Font Awesome 6 для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ 
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109609938', 'ym');
+
+    ym(109609938, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109609938" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    <style>
+        :root {
+            --deep-blue: #0A2647;
+            --ocean-blue: #144272;
+            --accent-gold: #E6A817;
+            --warm-sand: #F5E6CC;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+            --border-light: #E2E8F0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--deep-blue);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-align: center;
+            justify-content: center;
+        }
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--deep-blue);
+            box-shadow: 0 4px 14px rgba(230, 168, 23, 0.35);
+        }
+        .btn-primary:hover {
+            background: #d09915;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(230, 168, 23, 0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--deep-blue);
+        }
+        .btn-sm {
+            padding: 10px 22px;
+            font-size: 0.9rem;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: #e8f4fd;
+            color: var(--ocean-blue);
+        }
+
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--deep-blue);
+        }
+        .logo i {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+        }
+        .nav-list {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-list a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-list a:hover,
+        .nav-list a.active {
+            color: var(--ocean-blue);
+        }
+        .nav-list a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .phone-link {
+            font-weight: 700;
+            color: var(--deep-blue);
+            font-size: 1.05rem;
+        }
+        .phone-link i {
+            color: var(--accent-gold);
+            margin-right: 4px;
+        }
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+        .burger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--deep-blue);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, #0d3b5e 60%, #0f4c75 100%);
+            color: var(--white);
+            padding: 60px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(230,168,23,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
+        .hero-content h1 span {
+            color: var(--accent-gold);
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        .search-box {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: flex-end;
+            box-shadow: var(--shadow-lg);
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .search-field {
+            flex: 1 1 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .search-field label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .search-field input,
+        .search-field select {
+            padding: 12px 16px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-family: var(--font-main);
+            transition: var(--transition);
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+        .search-field input:focus,
+        .search-field select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 4px rgba(230, 168, 23, 0.1);
+            background: var(--white);
+        }
+        .search-box .btn {
+            flex: 0 0 auto;
+            padding: 12px 36px;
+            font-size: 1.05rem;
+        }
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+        .badge-item i {
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+        }
+
+        .destinations {
+            padding: 80px 0;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .card-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .card-img .tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+        }
+        .card-img .price-tag {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            background: var(--white);
+            color: var(--deep-blue);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+        }
+        .card-body {
+            padding: 20px 22px 24px;
+        }
+        .card-body h3 {
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+        }
+        .card-body .meta {
+            display: flex;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .card-body .meta i {
+            color: var(--accent-gold);
+            margin-right: 4px;
+        }
+        .card-body .description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .hot-tours {
+            background: var(--white);
+            padding: 80px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+        .hot-tours::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1920&h=600&fit=crop&q=60') center / cover no-repeat;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+        .hot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .hot-card {
+            display: flex;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .hot-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .hot-card-img {
+            width: 160px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+        }
+        .hot-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hot-card-body .old-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .hot-card-body .new-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #c0392b;
+            margin: 4px 0 8px;
+        }
+
+        .expert-pick {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 50%, #f8f4e8 100%);
+        }
+        .expert-pick .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .expert-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-blue);
+        }
+        .expert-info p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        .expert-info .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .expert-info .benefits li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .expert-info .benefits i {
+            color: #27ae60;
+            font-size: 1.2rem;
+        }
+        .expert-form {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+        .expert-form h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--deep-blue);
+        }
+        .expert-form input,
+        .expert-form textarea,
+        .expert-form select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            margin-bottom: 14px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--bg-light);
+        }
+        .expert-form input:focus,
+        .expert-form textarea:focus,
+        .expert-form select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: var(--white);
+        }
+        .expert-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .expert-form .btn {
+            width: 100%;
+        }
+
+        /* Секция Зачёт */
+        .zachet-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        .zachet-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        .zachet-card .fio {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            margin-top: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer {
+            background: var(--deep-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            position: relative;
+        }
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&h=400&fit=crop&q=30') center / cover no-repeat;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-col h4 {
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            position: relative;
+            display: inline-block;
+        }
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 36px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+        .footer-col p,
+        .footer-col a {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        .footer-col a:hover {
+            color: var(--accent-gold);
+        }
+        .footer-col i {
+            margin-right: 8px;
+            color: var(--accent-gold);
+            width: 16px;
+            text-align: center;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.9rem;
+            color: #94a3b8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            color: var(--deep-blue);
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            background: #d09915;
+            transform: translateY(-4px);
+        }
+
+        @media (max-width: 992px) {
+            .expert-pick .container {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+            }
+            .burger {
+                display: flex;
+            }
+            .phone-link {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .search-box {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .search-box .btn {
+                width: 100%;
+            }
+            .hot-card {
+                flex-direction: column;
+            }
+            .hot-card-img {
+                width: 100%;
+                height: 180px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .hero-badges {
+                gap: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header .container {
+                height: 60px;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .hero {
+                padding: 40px 0 50px;
+            }
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-earth-americas"></i> TravelDream
+            </a>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#" class="active">Главная</a></li>
+                    <li><a href="#destinations">Направления</a></li>
+                    <li><a href="#hot-tours">Горящие туры</a></li>
+                    <li><a href="#expert">Подбор тура</a></li>
+                    <li><a href="#zachet">Зачёт</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+74951234567" class="phone-link"><i class="fa-solid fa-phone"></i> +7 (495) 123-45-67</a>
+                <button class="burger" id="burgerBtn" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Откройте мир с <span>TravelDream</span></h1>
+                <p>Более 15 000 туров по 80 направлениям. Прямые контракты с отелями, честные цены и поддержка 24/7.</p>
+            </div>
+            <form class="search-box" id="searchForm">
+                <div class="search-field">
+                    <label for="destination">Куда хотите?</label>
+                    <select id="destination" required>
+                        <option value="" disabled selected>Выберите направление</option>
+                        <option value="turkey">Турция</option>
+                        <option value="egypt">Египет</option>
+                        <option value="uae">ОАЭ</option>
+                        <option value="thailand">Таиланд</option>
+                        <option value="maldives">Мальдивы</option>
+                        <option value="vietnam">Вьетнам</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label for="departure">Дата вылета</label>
+                    <input type="date" id="departure" required>
+                </div>
+                <div class="search-field">
+                    <label for="nights">Ночей</label>
+                    <select id="nights">
+                        <option>5–7</option>
+                        <option>7–10</option>
+                        <option>10–14</option>
+                        <option>14+</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label for="guests">Гостей</label>
+                    <select id="guests">
+                        <option>1 взрослый</option>
+                        <option selected>2 взрослых</option>
+                        <option>2 взрослых + 1 ребёнок</option>
+                        <option>2 взрослых + 2 детей</option>
+                        <option>3 взрослых</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Найти туры</button>
+            </form>
+            <div class="hero-badges">
+                <div class="badge-item"><i class="fa-solid fa-shield-halved"></i> Финансовая гарантия</div>
+                <div class="badge-item"><i class="fa-solid fa-headset"></i> Поддержка 24/7</div>
+                <div class="badge-item"><i class="fa-solid fa-medal"></i> Лучшее агентство 2025</div>
+                <div class="badge-item"><i class="fa-solid fa-percent"></i> Рассрочка 0%</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <h2 class="section-title">Популярные направления</h2>
+            <p class="section-subtitle">Выбирайте из проверенных вариантов — мы лично инспектируем каждый отель</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&h=400&fit=crop');">
+                        <span class="tag">Хит продаж</span>
+                        <span class="price-tag">от 68 900 ₽</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Турция, Анталья</h3>
+                        <div class="meta">
+                            <span><i class="fa-solid fa-star"></i> 4.9</span>
+                            <span><i class="fa-solid fa-clock"></i> 7 ночей</span>
+                            <span><i class="fa-solid fa-utensils"></i> Всё включено</span>
+                        </div>
+                        <p class="description">Пятизвёздочный отель Rixos Premium Belek с собственным аквапарком, частным пляжем и детским клубом.</p>
+                        <button class="btn btn-primary btn-sm" style="width:100%;">Забронировать</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop');">
+                        <span class="tag">Скидка 20%</span>
+                        <span class="price-tag">от 112 500 ₽</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Мальдивы, Атолл Баа</h3>
+                        <div class="meta">
+                            <span><i class="fa-solid fa-star"></i> 5.0</span>
+                            <span><i class="fa-solid fa-clock"></i> 10 ночей</span>
+                            <span><i class="fa-solid fa-utensils"></i> Завтраки</span>
+                        </div>
+                        <p class="description">Видео-туры по виллам на воде. Романтический пакет для пар: шампанское и ужин на закате в подарок.</p>
+                        <button class="btn btn-primary btn-sm" style="width:100%;">Забронировать</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?w=600&h=400&fit=crop');">
+                        <span class="tag">Новинка</span>
+                        <span class="price-tag">от 89 000 ₽</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>ОАЭ, Дубай</h3>
+                        <div class="meta">
+                            <span><i class="fa-solid fa-star"></i> 4.8</span>
+                            <span><i class="fa-solid fa-clock"></i> 7 ночей</span>
+                            <span><i class="fa-solid fa-utensils"></i> Завтраки и ужины</span>
+                        </div>
+                        <p class="description">Отель Atlantis The Palm: безлимитный доступ в аквапарк Aquaventure и океанариум Lost Chambers.</p>
+                        <button class="btn btn-primary btn-sm" style="width:100%;">Забронировать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hot-tours" id="hot-tours">
+        <div class="container">
+            <h2 class="section-title">🔥 Горящие туры</h2>
+            <p class="section-subtitle">Предложения с вылетом в ближайшие 3 дня — цены ниже рыночных на 25–40%</p>
+            <div class="hot-grid">
+                <div class="hot-card">
+                    <div class="hot-card-img" style="background-image: url('https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?w=300&h=200&fit=crop');"></div>
+                    <div class="hot-card-body">
+                        <span class="old-price">89 000 ₽</span>
+                        <span class="new-price">49 900 ₽</span>
+                        <p><strong>Турция, Кемер</strong> — 5★, всё включено, вылет через 2 дня</p>
+                        <button class="btn btn-primary btn-sm">Успеть</button>
+                    </div>
+                </div>
+                <div class="hot-card">
+                    <div class="hot-card-img" style="background-image: url('https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=300&h=200&fit=crop');"></div>
+                    <div class="hot-card-body">
+                        <span class="old-price">135 000 ₽</span>
+                        <span class="new-price">94 500 ₽</span>
+                        <p><strong>Египет, Шарм-эль-Шейх</strong> — 5★, рифовый пляж, дайвинг включён</p>
+                        <button class="btn btn-primary btn-sm">Успеть</button>
+                    </div>
+                </div>
+                <div class="hot-card">
+                    <div class="hot-card-img" style="background-image: url('https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=300&h=200&fit=crop');"></div>
+                    <div class="hot-card-body">
+                        <span class="old-price">198 000 ₽</span>
+                        <span class="new-price">129 000 ₽</span>
+                        <p><strong>Таиланд, Пхукет</strong> — 4★, завтраки, вылет завтра</p>
+                        <button class="btn btn-primary btn-sm">Успеть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="expert-pick" id="expert">
+        <div class="container">
+            <div class="expert-info">
+                <h2>Не знаете, что выбрать?</h2>
+                <p>Наши эксперты по направлениям живут и работают в стране вашей мечты. Они знают каждый отель лично и подберут вариант точно под ваш запрос — бесплатно.</p>
+                <ul class="benefits">
+                    <li><i class="fa-solid fa-circle-check"></i> Персональный менеджер закрепляется за вами</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Подбор за 30 минут в рабочее время</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Сравнение цен по всем туроператорам</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Помощь с визами и страховками</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Никаких наценок — цена как у туроператора</li>
+                </ul>
+            </div>
+            <form class="expert-form" id="expertForm">
+                <h3>Заявка на подбор тура</h3>
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="" disabled selected>Предпочтительное направление</option>
+                    <option>Турция</option>
+                    <option>Египет</option>
+                    <option>ОАЭ</option>
+                    <option>Таиланд</option>
+                    <option>Мальдивы</option>
+                    <option>Вьетнам</option>
+                    <option>Другое</option>
+                </select>
+                <textarea placeholder="Ваши пожелания: даты, бюджет, состав отдыхающих, особые просьбы..."></textarea>
+                <button type="submit" class="btn btn-primary">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Секция «Зачёт 3 июня» — статическое ФИО -->
+    <section class="zachet-section" id="zachet">
+        <div class="container">
+            <h2 class="section-title">Зачёт 3 июня</h2>
+            <p class="section-subtitle">Данные студента для зачёта</p>
+            <div class="zachet-card">
+                <div class="fio">Лукьянов Степан Евгеньевич</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>О нас</h4>
+                    <p>TravelDream — аккредитованное туристическое агентство с 12-летним опытом. Реестровый номер РТО 025836.</p>
+                    <p>Работаем только с проверенными туроператорами, входящими в реестр Ростуризма.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Направления</h4>
+                    <a href="#">Турция</a>
+                    <a href="#">Египет</a>
+                    <a href="#">ОАЭ</a>
+                    <a href="#">Таиланд</a>
+                    <a href="#">Мальдивы</a>
+                    <a href="#">Вьетнам</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Клиентам</h4>
+                    <a href="#">Как оплатить тур</a>
+                    <a href="#">Визовая поддержка</a>
+                    <a href="#">Страхование</a>
+                    <a href="#">Часто задаваемые вопросы</a>
+                    <a href="#">Политика конфиденциальности</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> Москва, ул. Тверская, 18, офис 312</p>
+                    <p><i class="fa-solid fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fa-solid fa-envelope"></i> hello@traveldream.ru</p>
+                    <p><i class="fa-solid fa-clock"></i> Ежедневно: 09:00–22:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2022–2026 TravelDream. Все права защищены. Информация на сайте носит ознакомительный характер и не является публичной офертой.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Наверх" title="Наверх">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 700) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            scrollTopBtn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-list a');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            const searchForm = document.getElementById('searchForm');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const destination = document.getElementById('destination').value;
+                    const departure = document.getElementById('departure').value;
+                    const nights = document.getElementById('nights').value;
+                    const guests = document.getElementById('guests').value;
+                    if (!destination || !departure) {
+                        alert('Пожалуйста, выберите направление и дату вылета.');
+                        return;
+                    }
+                    alert(`Отлично! Ищем туры в направлении "${destination}" на ${nights} ночей для ${guests}.`);
+                });
+            }
+
+            const expertForm = document.getElementById('expertForm');
+            if (expertForm) {
+                expertForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    alert('Спасибо! Ваша заявка принята. Наш эксперт свяжется с вами в ближайшее время.');
+                    expertForm.reset();
+                });
+            }
+
+            // Обработчик для зачёта удалён, т.к. форма убрана
+        });
+    </script>
+</body>
+</html>
